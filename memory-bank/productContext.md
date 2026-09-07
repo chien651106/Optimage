@@ -1,3 +1,5 @@
 # Product Context
 
-Upload images → set format / quality / max width / max KB → download results or ZIP.
+Upload images, videos, or documents → set format / options → download results or ZIP.
+
+Three modes via left tabs: **Ảnh** (`/`), **Video** (`/video`), **Docs** (`/docs`).

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Source_Sans_3 } from "next/font/google";
+import { siteConfig } from "@/lib/seo";
 import "./globals.css";
 
 const display = Outfit({
@@ -14,13 +15,36 @@ const sans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "SnapImg — Resize & tối ưu nhiều ảnh",
-  description: "Resize, nén, convert nhiều ảnh JPEG / PNG / WebP / AVIF. Tải ZIP.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="vi" className={`${display.variable} ${sans.variable} h-full antialiased`}>
+    <html lang="en" className={`${display.variable} ${sans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans text-[#10233a]">{children}</body>
     </html>
   );

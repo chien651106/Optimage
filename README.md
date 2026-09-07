@@ -1,26 +1,26 @@
-# SnapImg
+# Pixora
 
-Resize, nén, convert nhiều ảnh (JPEG / PNG / WebP / AVIF).
+Resize, compress, and convert images & videos (JPEG / PNG / WebP / AVIF · MP4 / WebM / MOV / GIF).
 
 ```bash
 npm install
 npm run dev
 ```
 
-Mở http://localhost:3000
+Open http://localhost:3000
 
-## Tính năng
+## Features
 
-- Upload nhiều ảnh
-- Max width + Max size (KB)
-- Convert format + đổi đuôi file
-- Tải từng ảnh hoặc ZIP
+- Batch image & video upload
+- Max width + max size targeting
+- Format convert with matching file extensions
+- Per-file download or ZIP
 
 ## Docker
 
 ```bash
-DOCKER_BUILD=1 docker build -t snapimg .
-docker run -p 3000:3000 snapimg
+DOCKER_BUILD=1 docker build -t pixora .
+docker run -p 3000:3000 pixora
 ```
 
-Dockerfile cần `ENV DOCKER_BUILD=1` trước bước `npm run build`.
+Dockerfile needs `ENV DOCKER_BUILD=1` before `npm run build`.

@@ -22,12 +22,24 @@ export const FORMAT_MIME: Record<OutputFormat, string> = {
 };
 
 export const MAX_FILES = 50;
-export const MAX_FILE_BYTES = 25 * 1024 * 1024;
+export const MAX_FILE_BYTES = 100 * 1024 * 1024;
 
 export function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+}
+
+/** Positive = smaller output; negative = grew. */
+export function sizeSavedPercent(original: number, output: number): number {
+  if (original <= 0) return 0;
+  return Math.round((1 - output / original) * 100);
+}
+
+export function formatSavedLabel(saved: number): string {
+  if (saved > 0) return `−${saved}%`;
+  if (saved < 0) return `+${Math.abs(saved)}%`;
+  return "0%";
 }
 
 export function clampQuality(value: number): number {
