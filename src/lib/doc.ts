@@ -24,19 +24,22 @@ export type ProcessDocResult = {
   summary: string;
 };
 
-const UNICODE_FONTS = [
-  "C:\\Windows\\Fonts\\arial.ttf",
-  "C:\\Windows\\Fonts\\segoeui.ttf",
-  "C:\\Windows\\Fonts\\tahoma.ttf",
-  "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-  "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
-  "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
-  "/System/Library/Fonts/Supplemental/Arial.ttf",
-];
-
+/** Literal paths only — dynamic existsSync(var) makes Turbopack trace the whole repo. */
 function resolveUnicodeFont(): string | null {
-  for (const path of UNICODE_FONTS) {
-    if (existsSync(path)) return path;
+  if (existsSync("C:\\Windows\\Fonts\\arial.ttf")) return "C:\\Windows\\Fonts\\arial.ttf";
+  if (existsSync("C:\\Windows\\Fonts\\segoeui.ttf")) return "C:\\Windows\\Fonts\\segoeui.ttf";
+  if (existsSync("C:\\Windows\\Fonts\\tahoma.ttf")) return "C:\\Windows\\Fonts\\tahoma.ttf";
+  if (existsSync("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")) {
+    return "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf";
+  }
+  if (existsSync("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf")) {
+    return "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf";
+  }
+  if (existsSync("/System/Library/Fonts/Supplemental/Arial Unicode.ttf")) {
+    return "/System/Library/Fonts/Supplemental/Arial Unicode.ttf";
+  }
+  if (existsSync("/System/Library/Fonts/Supplemental/Arial.ttf")) {
+    return "/System/Library/Fonts/Supplemental/Arial.ttf";
   }
   return null;
 }
