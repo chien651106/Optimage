@@ -9,7 +9,8 @@ import {
 } from "@/lib/video";
 
 export const runtime = "nodejs";
-export const maxDuration = 600;
+/** Hobby max is 300s; 600+ fails deploy with a silent Error at "Deploying outputs". */
+export const maxDuration = 300;
 
 const FORMATS = new Set<VideoOutputFormat>(["mp4", "webm", "mov", "gif"]);
 
