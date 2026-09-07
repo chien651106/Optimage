@@ -19,6 +19,8 @@ Mở http://localhost:3000
 ## Docker
 
 ```bash
-docker build -t snapimg .
+DOCKER_BUILD=1 docker build -t snapimg .
 docker run -p 3000:3000 snapimg
 ```
+
+Dockerfile cần `ENV DOCKER_BUILD=1` trước bước `npm run build`.
